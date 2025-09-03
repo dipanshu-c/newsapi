@@ -24,7 +24,11 @@
             background: #fff;
             padding: 15px;
             border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px  rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .news-card:hover {
+            transform: translateY(-5px);
         }
         .news-card img {
             width: 100%;
@@ -51,6 +55,9 @@
             text-decoration: none;
             color: #007BFF;
         }
+        .news-card a:hover {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -58,13 +65,17 @@
     <div class="news-container">
         {% for article in allNews %}
             <div class="news-card">
+                <a href="{{ article.url }}" target="_blank">
                 {% if article.urlToImage %}
                     <img src="{{ article.urlToImage }}" alt="News image">
+                {% else %}
+                    <img src="https://vrakking-tires.com/img/p/en-default-large_default.jpg" alt="No image available">
                 {% endif %}
-                <h2><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></h2>
+                <h2>{{ article.title | truncate(50)}}</h2>
                 <p>{{ article.description }}</p>
                 <small>Source: {{ article.source.name }}</small>
                 <small>Published: {{ article.publishedAt[:10] }}</small>
+                </a>
             </div>
         {% endfor %}
     </div>
