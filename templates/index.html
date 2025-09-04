@@ -132,12 +132,6 @@
                 <a href="/{{ cat }}" class="{% if cat == active_category %}active{% endif %}">{{ cat }}</a>
             {% endfor %}
         </div>
-        <div class="search-box">
-            <form action="/search" method="GET">
-                <input type="text" name="q" placeholder="Search news..." required>
-                <button type="submit">Search</button>
-            </form>
-        </div>
     </div>
 
     <div class="news-container">
@@ -147,7 +141,7 @@
                 {% if article.urlToImage %}
                     <img src="{{ article.urlToImage }}" alt="News image">
                 {% else %}
-                    <img src="https://vrakking-tires.com/img/p/en-default-large_default.jpg" alt="No image available">
+                    <img src="https://vrakking-tires.com/img/p/en-default-large_default.jpg">
 " alt="No image available">
                 {% endif %}
                 <h2>{{ article.title | truncate(50)}}</h2>
